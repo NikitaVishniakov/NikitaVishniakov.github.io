@@ -1,6 +1,8 @@
 <div class="container">
-    <h2 style="display:none">Пойдешь курить?</h2>
-    <button class="btn btn-big btn-green">Нажми на кнопку, чтобы посмотреть вопрос</button>
+    <div class="layout">
+        <h2 style="display:none">Пойдешь курить?</h2>
+        <div class="btn btn-big btn-green">Нажми на кнопку, чтобы посмотреть вопрос</div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
@@ -10,40 +12,48 @@
     })
 </script>
 <style>
+html, body{
+    height: 100%;
+    margin: 0;
+}
 .container{
+background: url(space.jpg);
+background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 box-sizing: border-box;
 width:100%;
-height:700px;
+height: 100%;
 padding:50px;
-margin-top:100px;
 text-align:center;
 }
 h2{
 font-size: 70px;
 display:inline;
+    color: #fff;
 }
 .btn{
-    border-radius: 6px;
     display: inline-block;
-    border: 1px solid transparent;
+    border: 1px solid white;
+    background: transparent;
     transition: 0.7s all ease;
     outline: none;
     color: #fff;
-    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);
+/*    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);*/
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 25px;
 }
 .btn-big{
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 25px 30px;
 }
 .btn-small{
     padding: 5px 10px;
     font-size: 16px;
 }
-.btn-green{
-    background-color: #78bda9;
-}
 .btn-green:hover{
-    background-color: #317256;
+        background: rgba(255, 255, 255, 0.9);
+    color: #333;
 }
 </style>
