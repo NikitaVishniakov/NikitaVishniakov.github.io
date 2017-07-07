@@ -1,0 +1,49 @@
+<div class="container">
+    <h2 style="display:none">Ты пидор.</h2>
+    <button class="btn btn-big btn-green">Нажми на кнопку, чтобы продолжить</button>
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $('.btn').click(function(){
+        $(this).hide();
+        $('h2').show();
+    })
+</script>
+<style>
+.container{
+box-sizing: border-box;
+width:100%;
+height:700px;
+padding:50px;
+margin-top:100px;
+text-align:center;
+}
+h2{
+font-size: 70px;
+display:inline;
+}
+.btn{
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid transparent;
+    transition: 0.7s all ease;
+    outline: none;
+    color: #fff;
+    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+.btn-big{
+    padding: 10px 20px;
+    font-size: 18px;
+}
+.btn-small{
+    padding: 5px 10px;
+    font-size: 16px;
+}
+.btn-green{
+    background-color: #78bda9;
+}
+.btn-green:hover{
+    background-color: #317256;
+}
+</style>
