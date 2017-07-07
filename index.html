@@ -1,7 +1,7 @@
 <div class="container">
     <div class="layout">
-        <h2 style="display:none">Пойдешь курить?</h2>
-        <div class="btn btn-big btn-green">Нажми на кнопку, чтобы посмотреть вопрос</div>
+        <h2 style="display:none">Пойдем дымить?</h2>
+        <div class="btn btn-big btn-green">Что с походом в кальянную вечерком?</div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -9,31 +9,56 @@
     $('.btn').click(function(){
         $(this).hide();
         $('h2').show();
+        $('h2').addClass('rotate');
+    })
+    $('h2').click(function(){
+        $('.btn').show();
+        $('h2').hide();
     })
 </script>
+
+
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
 html, body{
+    font-family: Roboto;
     height: 100%;
     margin: 0;
+    overflow: hidden;
+    
 }
 .container{
-background: url(space.jpg);
+background: url(shisha.jpg);
 background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
+background-repeat: no-repeat;
+background-size: cover;
 box-sizing: border-box;
 width:100%;
 height: 100%;
-padding:50px;
 text-align:center;
 }
+    .layout{
+        display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    background: rgba(255,255,255, 0.1);
+    }
 h2{
 font-size: 70px;
 display:inline;
     color: #fff;
+    margin: auto;
+    transition: all 5s ease; 
+}
+.rotate{
+    font-size: 150px;
+    transform: rotate(360deg);
 }
 .btn{
+    margin: auto;
     display: inline-block;
     border: 1px solid white;
     background: transparent;
@@ -42,7 +67,7 @@ display:inline;
     color: #fff;
 /*    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);*/
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0,0,0, 0.6);
     font-size: 25px;
 }
 .btn-big{
