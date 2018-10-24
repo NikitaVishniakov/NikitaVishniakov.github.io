@@ -13,7 +13,7 @@ var debtSpan = $('.debt-amount');
 var amount = 270;
 var startDate = new Date(2018, 9, 24, 14, 30, 0, 0);
 var endDate   = new Date();
-var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+var seconds = parseInt((endDate.getTime() - startDate.getTime()) / 10000);
 
 var amount_final = parseFloat(amount + (seconds * 0.01)).toFixed(2);
 debtSpan.text(amount_final);
@@ -24,7 +24,7 @@ var updateTimer = function() {
     debtSpan.text(round);
 };
 
-setInterval(updateTimer, 1000);
+setInterval(updateTimer, 10000);
 </script>
 
 
