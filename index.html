@@ -11,8 +11,12 @@ var date = today.toLocaleDateString("ru-RU");
 $('.date-value').text(date);
 var debtSpan = $('.debt-amount');
 var amount = 270;
-var amount_final = amount;
-debtSpan.text(amount);
+var startDate = new Date(2018, 9, 24, 14, 30, 0, 0);
+var endDate   = new Date();
+var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+
+var amount_final = amount + (seconds * 0.01);
+debtSpan.text(amount_final);
 
 var updateTimer = function() {
   var count = parseFloat(debtSpan.text());
@@ -35,7 +39,7 @@ html, body{
     
 }
 .container{
-background: url(shisha.jpg);
+background: url(https://shlaikov.github.io/images/avatar.png);
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
@@ -44,8 +48,14 @@ width:100%;
 height: 100%;
 text-align:center;
 }
+.debt-amount{
+        color: red;
+    font-size: 10rem;
+    display: block;
+}
     .layout{
         display: flex;
+    flex-wrap: wrap;
     width: 100%;
     height: 100%;
     padding: 50px;
