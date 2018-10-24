@@ -9,11 +9,17 @@
 var today  = new Date();
 var date = today.toLocaleDateString("ru-RU");
 $('.date-value').text(date);
-
+var debtSpan = $('.debt-amount');
 var amount = 270;
 var amount_final = amount;
-$('.debt-amount').text(amount);
+debtSpan.text(amount);
 
+var updateTimer = function() {
+  var count = parseFloat(debtSpan.text());
+    debtSpan.text(count += 0.01);
+};
+
+setInterval(updateTimer, 1000);
 </script>
 
 
