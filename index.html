@@ -16,7 +16,8 @@ debtSpan.text(amount);
 
 var updateTimer = function() {
   var count = parseFloat(debtSpan.text());
-    debtSpan.text(count += 0.01);
+    var round = (count + 0.01).toFixed(2)
+    debtSpan.text(round);
 };
 
 setInterval(updateTimer, 1000);
