@@ -1,20 +1,19 @@
 <div class="container">
     <div class="layout">
-        <h2 style="display:none">Пойдем дымить?</h2>
-        <div class="btn btn-big btn-green">Что с походом в кальянную вечерком?</div>
+        <div class="date">Сегодня, <span class="date-value"></span></div>
+        <div class="btn btn-big btn-green">Алексей Шлайков имеет задолженность в размере: <span class="debt-amount"></span> руб.</div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-    $('.btn').click(function(){
-        $(this).hide();
-        $('h2').show();
-        $('h2').addClass('rotate');
-    })
-    $('h2').click(function(){
-        $('.btn').show();
-        $('h2').hide();
-    })
+var today  = new Date();
+var date = today.toLocaleDateString("ru-RU");
+$('.date-value').text(date);
+
+var amount = 270;
+var amount_final = amount;
+$('.debt-amount').text(amount);
+
 </script>
 
 
