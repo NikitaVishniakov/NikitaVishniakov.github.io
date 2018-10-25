@@ -1,7 +1,7 @@
 <div class="container">
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
-        <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount total"></span> руб.</div>
+        <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount total" id="total"></span> руб.</div>
         <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date1"></span> в размере: <span class="debt-amount"></span> руб.</div>
         <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date2"></span> в размере: <span class="debt-amount1"></span> руб.</div>
     
@@ -15,7 +15,7 @@ $('.date-value').text(date);
 
 var debtSpan = $('.debt-amount');
 var debtSpan1 = $('.debt-amount1');
-var debtSpanTotal = $('.debt-amount.total');
+var debtSpanTotal = $('#total');
 
 
 var amount = 270;
