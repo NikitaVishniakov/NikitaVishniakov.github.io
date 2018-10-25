@@ -2,8 +2,8 @@
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
         <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount total"></span> руб.</div>
-        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность в размере: <span class="debt-amount"></span> руб.</div>
-        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность в размере: <span class="debt-amount1"></span> руб.</div>
+        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date1"></span> в размере: <span class="debt-amount"></span> руб.</div>
+        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date2"></span> в размере: <span class="debt-amount1"></span> руб.</div>
     
 </div>
 </div>
@@ -27,6 +27,9 @@ var amount2 = 228;
 var startDate1 = new Date(2018, 9, 25, 13, 09, 0, 0);
 var endDate1   = new Date();
 var seconds1 = parseInt((endDate1.getTime() - startDate1.getTime()) / 10000);
+
+$('.date1').text(startDate.toLocaleDateString("ru-RU"));
+$('.date2').text(startDate1.toLocaleDateString("ru-RU"));
 
 var amount_final2 =  parseFloat(amount2 + (seconds1 * 0.01)).toFixed(2);
 debtSpan1.text(amount_final2);
@@ -124,6 +127,7 @@ display:inline;
 .btn-small{
     padding: 5px 10px;
     font-size: 16px;
+    width: 100%;
 }
 .btn-green:hover{
         background: rgba(255, 255, 255, 0.9);
