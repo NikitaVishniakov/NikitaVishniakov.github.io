@@ -2,26 +2,42 @@
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
         <div class="btn btn-big btn-green">Алексей Шлайков имеет задолженность в размере: <span class="debt-amount"></span> руб.</div>
-    </div>
+        <div class="btn btn-big btn-green">Алексей Шлайков имеет задолженность в размере: <span class="debt-amount1"></span> руб.</div>
+    
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 var today  = new Date();
 var date = today.toLocaleDateString("ru-RU");
 $('.date-value').text(date);
+
 var debtSpan = $('.debt-amount');
+var debtSpan2 = $('.debt-amount1');
+
 var amount = 270;
 var startDate = new Date(2018, 9, 24, 14, 30, 0, 0);
 var endDate   = new Date();
 var seconds = parseInt((endDate.getTime() - startDate.getTime()) / 10000);
+
+var amount2 = 228;
+var startDate1 = new Date(2018, 9, 25, 13, 09, 0, 0);
+var endDate1   = new Date();
+var seconds1 = parseInt((endDate1.getTime() - startDate1.getTime()) / 10000);
+
+var amount_final2 =  parseFloat(amount2 + (seconds1 * 0.01)).toFixed(2);
+debtSpan1.text(amount_final2);
 
 var amount_final = parseFloat(amount + (seconds * 0.01)).toFixed(2);
 debtSpan.text(amount_final);
 
 var updateTimer = function() {
   var count = parseFloat(debtSpan.text());
+    var count1 = parseFloat(debtSpan1.text());
     var round = (count + 0.01).toFixed(2)
+    var round1 = (count1 + 0.01).toFixed(2)
     debtSpan.text(round);
+    debtSpan1.text(round1);
 };
 
 setInterval(updateTimer, 10000);
@@ -50,9 +66,15 @@ text-align:center;
 }
 .debt-amount{
         color: red;
-    font-size: 10rem;
+    font-size: 2em;
     display: block;
 }
+.debt-amount1{
+        color: red;
+    font-size: 2em;
+    display: block;
+}
+
     .layout{
         display: flex;
     flex-wrap: wrap;
