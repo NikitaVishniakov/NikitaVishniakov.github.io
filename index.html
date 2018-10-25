@@ -1,7 +1,7 @@
 <div class="container">
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
-        <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount total" id="total"></span> руб.</div>
+        <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount-total" id="total"></span> руб.</div>
         <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date1"></span> в размере: <span class="debt-amount"></span> руб.</div>
         <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date2"></span> в размере: <span class="debt-amount1"></span> руб.</div>
     
@@ -37,7 +37,7 @@ debtSpan1.text(amount_final2);
 var amount_final = parseFloat(amount + (seconds * 0.01)).toFixed(2);
 debtSpan.text(amount_final);
 
-var amount_total = (amount_final + amount_final2).toFixed(2);
+var amount_total = parseFloat(amount_final + amount_final2).toFixed(2);
 debtSpanTotal.text(amount_total);
 
 var updateTimer = function() {
@@ -76,6 +76,11 @@ height: 100%;
 text-align:center;
 }
 .debt-amount{
+        color: red;
+    font-size: 2em;
+    display: block;
+}
+.debt-amount-total{
         color: red;
     font-size: 2em;
     display: block;
