@@ -47,7 +47,7 @@ var updateTimer = function() {
     var round1 = (count1 + 0.01).toFixed(2)
     debtSpan.text(round);
     debtSpan1.text(round1);
-    var total = (round + round1).toFixed(2);
+    var total = parseFloat(round + round1).toFixed(2);
     debtSpanTotal.text(total);
 };
 
