@@ -2,145 +2,159 @@
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
         <div class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount-total" id="total"></span> руб.</div>
-        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date1"></span> в размере: <span class="debt-amount"></span> руб.</div>
-        <div class="btn btn-small btn-green">Алексей Шлайков имеет задолженность от <span class="date2"></span> в размере: <span class="debt-amount1"></span> руб.</div>
-    
-</div>
+      </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-var today  = new Date();
-var date = today.toLocaleDateString("ru-RU");
-$('.date-value').text(date);
+    var today  = new Date();
+    var date = today.toLocaleDateString("ru-RU");
+    $('.date-value').text(date);
 
-var debtSpan = $('.debt-amount');
-var debtSpan1 = $('.debt-amount1');
-var debtSpanTotal = $('#total');
+    var debtSpan = $('.debt-amount');
+    var debtSpan1 = $('.debt-amount1');
+    var debtSpanTotal = $('#total');
 
+    var arrDebt = [
+        {
+            amount: 270,
+            date: new Date(2018, 9, 24, 14, 30, 0, 0)
+        },
+        {
+            amount: 252,
+            date: new Date(2018, 9, 25, 13, 09, 0, 0)
+         },
+        {
+            amount: 290,
+            date: new Date(2018, 9, 26, 13, 30, 0, 0)
+        }
+    ]
 
-var amount = 270;
-var startDate = new Date(2018, 9, 24, 14, 30, 0, 0);
-var endDate   = new Date();
-var seconds = parseInt((endDate.getTime() - startDate.getTime()) / 10000);
+    var total, dateStr, totalAll = 0;
+    arrDebt.forEach(function (item, i, arrDebt) {
+        total = countPers(item.amount, item.date);
+        totalAll =  (parseFloat(totalAll) + parseFloat(total)).toFixed(2);
+        dateStr = item.date.toLocaleDateString("ru-RU");
+        $('.layout').append($('<div/>', {
+            text: "Алексей Шлайков имеет задолженность от " + dateStr + " в размере:",
+            "class": "btn btn-small btn-green",
+        }).append($('<span/>', {
+            text: total,
+            "class": "debt-amount",
+        })).append($('<span/>', {
+            text: "руб."
+        })));
+    });
 
-var amount2 = 252;
-var startDate1 = new Date(2018, 9, 25, 13, 09, 0, 0);
-var endDate1   = new Date();
-var seconds1 = parseInt((endDate1.getTime() - startDate1.getTime()) / 10000);
+    $('#total').text(totalAll);
 
-$('.date1').text(startDate.toLocaleDateString("ru-RU"));
-$('.date2').text(startDate1.toLocaleDateString("ru-RU"));
+    function countPers(amount, date) {
+        var now, seconds, total;
+        now = new Date();
+        seconds = parseInt((now.getTime() - date.getTime()) / 10000);
+        return  parseFloat(amount + (seconds * 0.01)).toFixed(2);
+    }
+    //
+    var updateTimer = function() {
+        var total = 0;
+        $('.debt-amount').each(function (i, val) {
+            var that = this;
+            var count = $(val).text();
+            var round = (parseFloat(count) + 0.01).toFixed(2);
+            total = (parseFloat(total) + parseFloat(round)).toFixed(2);
+            $(that).text(round);
+            $('#total').text(total);
+        });
+    };
 
-var amount_final2 =  parseFloat(amount2 + (seconds1 * 0.01)).toFixed(2);
-debtSpan1.text(amount_final2);
-
-var amount_final = parseFloat(amount + (seconds * 0.01)).toFixed(2);
-debtSpan.text(amount_final);
-
-var amount_total = (parseFloat(amount_final) + parseFloat(amount_final2)).toFixed(2);
-console.log(amount_total);
-debtSpanTotal.text(amount_total);
-
-var updateTimer = function() {
-  var count = parseFloat(debtSpan.text());
-    var count1 = parseFloat(debtSpan1.text());
-    var round = (count + 0.01).toFixed(2)
-    var round1 = (count1 + 0.01).toFixed(2)
-    debtSpan.text(round);
-    debtSpan1.text(round1);
-    var total = (parseFloat(round) + parseFloat(round1)).toFixed(2);
-    debtSpanTotal.text(total);
-};
-
-setInterval(updateTimer, 10000);
+    setInterval(updateTimer, 10000);
 </script>
 
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
-html, body{
-    font-family: Roboto;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    
-}
-.container{
-background: url(https://shlaikov.github.io/images/avatar.png);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-box-sizing: border-box;
-width:100%;
-height: 100%;
-text-align:center;
-}
-.debt-amount{
+    html, body{
+        font-family: Roboto;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+
+    }
+    .container{
+        background: url(https://shlaikov.github.io/images/avatar.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-sizing: border-box;
+        width:100%;
+        height: 100%;
+        text-align:center;
+    }
+    .debt-amount{
         color: red;
-    font-size: 2em;
-    display: block;
-}
-.debt-amount-total{
+        font-size: 2em;
+        display: block;
+    }
+    .debt-amount-total{
         color: red;
-    font-size: 2em;
-    display: block;
-}
-.debt-amount1{
+        font-size: 2em;
+        display: block;
+    }
+    .debt-amount1{
         color: red;
-    font-size: 2em;
-    display: block;
-}
+        font-size: 2em;
+        display: block;
+    }
 
     .layout{
         display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-    padding: 50px;
-    box-sizing: border-box;
-    background: rgba(255,255,255, 0.1);
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        padding: 50px;
+        box-sizing: border-box;
+        background: rgba(255,255,255, 0.1);
     }
-h2{
-    opacity: 0.2;
-font-size: 70px;
-display:inline;
-    color: #fff;
-    margin: auto;
-    transition: all 1s linear; 
-}
-.rotate{
-    opacity: 1;
-    font-size: 150px;
-    transform: rotate(360deg);
-}
-.btn{
-    margin: auto;
-    display: inline-block;
-    border: 1px solid white;
-    background: transparent;
-    transition: 0.7s all ease;
-    outline: none;
-    color: #fff;
-/*    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);*/
-    cursor: pointer;
-    background: rgba(0,0,0, 0.6);
-    font-size: 25px;
-}
-.btn-big{
-    padding: 25px 30px;
-}
-.btn-small{
-    padding: 5px 10px;
-    font-size: 16px;
-    width: 100%;
-}
-.btn-green:hover{
+    h2{
+        opacity: 0.2;
+        font-size: 70px;
+        display:inline;
+        color: #fff;
+        margin: auto;
+        transition: all 1s linear;
+    }
+    .rotate{
+        opacity: 1;
+        font-size: 150px;
+        transform: rotate(360deg);
+    }
+    .btn{
+        margin: auto;
+        display: inline-block;
+        border: 1px solid white;
+        background: transparent;
+        transition: 0.7s all ease;
+        outline: none;
+        color: #fff;
+        /*    box-shadow: -1px 1px 1px 0px rgba(0, 0, 0, 0.22);*/
+        cursor: pointer;
+        background: rgba(0,0,0, 0.6);
+        font-size: 25px;
+    }
+    .btn-big{
+        padding: 25px 30px;
+    }
+    .btn-small{
+        padding: 5px 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+    .btn-green:hover{
         background: rgba(255, 255, 255, 0.9);
-    color: #333;
-}
-.date{
-    width:100%;
-    text-align:left;
+        color: #333;
+    }
+    .date{
+        width:100%;
+        text-align:left;
     }
 </style>
