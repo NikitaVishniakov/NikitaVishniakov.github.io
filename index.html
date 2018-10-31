@@ -24,17 +24,9 @@
 
     var arrDebt = [
         {
-            amount: 270,
+            amount: 0,
             date: new Date(2018, 9, 24, 14, 30, 0, 0)
         },
-        {
-            amount: 252,
-            date: new Date(2018, 9, 25, 13, 09, 0, 0)
-         },
-        {
-            amount: 290,
-            date: new Date(2018, 9, 26, 13, 30, 0, 0)
-        }
     ]
 
     var total, dateStr, totalAll = 0;
@@ -59,7 +51,7 @@
         var now, seconds, total;
         now = new Date();
         seconds = parseInt((now.getTime() - date.getTime()) / 10000);
-        return  parseFloat(amount + (seconds * 0.01)).toFixed(2);
+        return  parseFloat(amount + (seconds * 0)).toFixed(2);
     }
     //
     var updateTimer = function() {
@@ -74,7 +66,7 @@
         });
     };
 
-    setInterval(updateTimer, 100);
+//     setInterval(updateTimer, 100);
 </script>
 
 
