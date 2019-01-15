@@ -9,7 +9,7 @@
 <div class="container">
     <div class="layout">
         <div class="date">Сегодня, <span class="date-value"></span></div>
-        <h1 class="btn btn-big btn-green">Общая задолженность Алексея Шлайкова: <span class="debt-amount-total" id="total"></span> руб.</h1>
+        <h1 class="btn btn-big btn-green">Скидка на поездку составляет: <span class="debt-amount-total" id="total"></span> руб.</h1>
       </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -25,14 +25,14 @@
     var arrDebt = [
         {
             amount: 4000,
-            date: new Date(2018, 9, 24, 14, 30, 0, 0)
+            date: new Date(2018, 1, 15, 17, 0, 0, 0)
         },
     ]
 
-    var total, dateStr, totalAll = 0;
+    var total, dateStr, totalAll = 4000;
     arrDebt.forEach(function (item, i, arrDebt) {
         total = countPers(item.amount, item.date);
-        totalAll =  (parseFloat(totalAll) + parseFloat(total)).toFixed(2);
+        totalAll =  (parseFloat(totalAll) - parseFloat(total)).toFixed(2);
         dateStr = item.date.toLocaleDateString("ru-RU");
         $('.layout').append($('<div/>', {
             text: "Скидка на поездку составляет:",
@@ -51,22 +51,16 @@
         var now, seconds, total;
         now = new Date();
         seconds = parseInt((now.getTime() - date.getTime()) / 10000);
-        return  parseFloat(amount + (seconds * 0)).toFixed(2);
+        return  parseFloat(amount - (seconds * 1000/86400)).toFixed(2);
     }
     //
     var updateTimer = function() {
-        var total = 0;
-        $('.debt-amount').each(function (i, val) {
-            var that = this;
-            var count = $(val).text();
-            var round = (parseFloat(count) + 0.01).toFixed(2);
-            total = (parseFloat(total) + parseFloat(round)).toFixed(2);
-            $(that).text(round);
-            $('#total').text(total);
-        });
+        var start = parseFloat($('#total').text());
+
+        var total = (parseFloat(start) - 1000/86400).toFixed(2);
     };
 
-//     setInterval(updateTimer, 100);
+    setInterval(updateTimer, 100);
 </script>
 
 
